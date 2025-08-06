@@ -23,6 +23,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class RegisterStepDef {
 
 	WebDriver driver;
+	String username = "";
 
 	@Given("User navigates to Home Page")
 	public void user_navigates_to_home_page() {
@@ -64,7 +65,7 @@ public class RegisterStepDef {
 
 	@When("user enters user details with user id {string} password {string} email {string}")
 	public void user_enters_user_details_with_user_id_password_email(String userId, String password, String email) {
-
+       username = userId;
 		// Write code here that turns the phrase above into concrete actions
 		WebElement fnameElement = driver.findElement(By.id("firstName"));
 		WebElement lnameElement = driver.findElement(By.id("lastName"));
@@ -90,6 +91,7 @@ public class RegisterStepDef {
 
 	@When("clicks on Register Button")
 	public void clicks_on_register_button() {
+		System.out.println("USERNAME IS " + username);
 		// Write code here that turns the phrase above into concrete actions
 		WebElement registerBtn = driver.findElement(By.id("login"));
 		registerBtn.click();
